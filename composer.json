@@ -9,5 +9,10 @@
             "email": "optiwari.india@gmail.com"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "optiwariindia\\":"src/"
+        }
+    },
     "require": {}
 }
