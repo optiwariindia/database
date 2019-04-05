@@ -1,0 +1,13 @@
+{
+    "name": "optiwariindia/database",
+    "description": "A library to connect database and use basic activities in database like create,select,insert,update,delete and drop using predefined methods",
+    "type": "library",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Om Tiwari",
+            "email": "optiwari.india@gmail.com"
+        }
+    ],
+    "require": {}
+}
