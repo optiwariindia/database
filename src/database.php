@@ -126,13 +126,16 @@ class database
         $sql = "insert into $table set ";
         $fld = array();
         foreach ($data as $key => $value) {
-            if(is_array($value))$value=json_encode($value);
+            if (is_array($value)) {
+                $value = json_encode($value);
+            }
+
             if (($key == "pass") || ($key == "passwd")) {
                 $fld[] = " $key=md5('{$value}')";
             } else {
-                if($value=="now()"){
-                    $fld[]=" $key = $value ";
-                }else{
+                if ($value == "now()") {
+                    $fld[] = " $key = $value ";
+                } else {
 
                     $fld[] = " $key='{$value}'";
                 }
@@ -150,10 +153,13 @@ class database
         $sql = "update `{$table}` set ";
         $fld = array();
         foreach ($data as $key => $value) {
-            if($value=="now()"){
-                $fld[]=" $key = $value ";
-            }else{
-                if(is_array($value))$value=json_encode($value);
+            if ($value == "now()") {
+                $fld[] = " $key = $value ";
+            } else {
+                if (is_array($value)) {
+                    $value = json_encode($value);
+                }
+
                 $fld[] = (is_numeric($value)) ? " $key={$value}" : " $key='{$value}'";
             }
         }
@@ -175,7 +181,12 @@ class database
     {
         $data = array();
         foreach ($var as $key => $value) {
-            $data[$key] = $this->res($value);
+            if (is_array($value)) {
+                $data[$key] = $this->resa($value);
+            } else {
+                $data[$key] = $this->res($value);
+            }
+
         }
         return $data;
     }
@@ -202,8 +213,11 @@ class database
         if (strstr($sql, "insert")) {
             $id = $this->con->insert_id;
             $this->disconnect();
-            $resp=array("result" => $result,  'id' => $id);
-            if($this->debug)$res["query"]=$sql;
+            $resp = array("result" => $result, 'id' => $id);
+            if ($this->debug) {
+                $res["query"] = $sql;
+            }
+
             return $resp;
         } else {
             $this->disconnect();
