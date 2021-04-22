@@ -2,7 +2,7 @@
     "name": "optiwariindia/database",
     "description": "A library to connect database and use basic activities in database like create,select,insert,update,delete and drop using predefined methods",
     "type": "library",
-    "version":"1.2.0",
+    "version":"1.2.1",
     "license": "MIT",
     "authors": [
         {

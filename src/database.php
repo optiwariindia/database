@@ -153,7 +153,9 @@ class database
         $sql = "update `{$table}` set ";
         $fld = array();
         foreach ($data as $key => $value) {
-            if ($value == "now()") {
+          if (($key == "pass") || ($key == "passwd")) {
+              $fld[] = " $key=md5('{$value}')";
+          }elseif ($value == "now()") {
                 $fld[] = " $key = $value ";
             } else {
                 if (is_array($value)) {
